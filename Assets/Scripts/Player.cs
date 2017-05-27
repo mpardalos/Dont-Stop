@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 public class Player : MonoBehaviour {
     // Inspector properties
@@ -43,3 +44,27 @@ public class Player : MonoBehaviour {
         Health -= 1;
     }
 }
+
+[CustomEditor(typeof(Player))]
+public class PlayerEditor : Editor {
+    public override void OnInspectorGUI() {
+
+        DrawDefaultInspector();
+        
+        #region +/- health buttons
+        GUILayout.BeginHorizontal();
+
+        if (Application.isPlaying && GUILayout.Button("-Health")) {
+            ((Player)target).Health -= 1;
+        }
+
+        if (Application.isPlaying && GUILayout.Button("+Health")) {
+            ((Player)target).Health += 1;
+        }
+
+        GUILayout.EndHorizontal();
+        #endregion
+    }
+}
+
+
