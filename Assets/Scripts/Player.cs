@@ -1,13 +1,24 @@
 ﻿using System;
+using System.Timers;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
 public class Player : MonoBehaviour {
-    // Inspector properties
+
+    #region Inspector properties
     public float MoveSpeed;
     public int MaxHealth;
+
+    // better organisation in inspector
+    [Serializable]
+    public class _HealthTickProperties {
+        public int HealthTicksPerSecond;
+        public int HealthLossPerTick;
+    }
+    public _HealthTickProperties HealthTickProperties;
+    #endregion
 
     // Fired when the player's health changes. Primarily used to notify GameMaster so that
     // it can update the health display
@@ -30,18 +41,30 @@ public class Player : MonoBehaviour {
     }
 
     private Rigidbody2D m_Rigidbody;
+    // Timer for ticking health
+    private Timer m_HealthTick;
+    private int m_HealthTicksSinceLastUpdate;
 
     void Start() {
         m_Rigidbody = GetComponent<Rigidbody2D>();
         m_Health = MaxHealth;
+
+        // The Health setter is not thread safe so the timer adds to a tick count which is
+        // applied and reset in Update()
+        m_HealthTick = new Timer((1.0/HealthTickProperties.HealthTicksPerSecond) * 1000);
+        m_HealthTick.AutoReset = true;
+        m_HealthTick.Elapsed += (source, e) => m_HealthTicksSinceLastUpdate += 1;
+        m_HealthTick.Enabled = true;
     }
     
     public void Move(Vector2 direction) {
         m_Rigidbody.velocity = direction.normalized * MoveSpeed;
     }
 
-    void OnCollisionEnter2D(Collision2D col) {
-        Health -= 1;
+    void Update() {
+        // Apply the health ticks from m_HealthTick 
+        Health -= m_HealthTicksSinceLastUpdate * HealthTickProperties.HealthLossPerTick;
+        m_HealthTicksSinceLastUpdate = 0;
     }
 }
 
@@ -66,5 +89,3 @@ public class PlayerEditor : Editor {
         #endregion
     }
 }
-
-

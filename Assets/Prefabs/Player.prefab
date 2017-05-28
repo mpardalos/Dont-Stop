@@ -100,6 +100,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoveSpeed: 5
+  MaxHealth: 100
+  HealthTickProperties:
+    HealthTicksPerSecond: 1
+    HealthLossPerTick: 2
 --- !u!212 &212837108384286932
 SpriteRenderer:
   m_ObjectHideFlags: 1
