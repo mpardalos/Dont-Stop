@@ -7,9 +7,13 @@ public class GameMaster : MonoBehaviour {
     public HealthDisplay HealthDisplay;
 
     private Player m_Player;
+    public Player Player {get; private set;}
 
-	void Start() {
-	    m_Player = GameObject.Find("Player").GetComponent<Player>();	
-        m_Player.HealthChanged += (newHealth) => HealthDisplay.Health = newHealth;
+	void Awake() {
+	    Player = GameObject.Find("Player").GetComponent<Player>();	
 	}
+
+    void Start() {
+        Player.HealthChanged += (newHealth) => HealthDisplay.Health = newHealth;
+    }
 }
