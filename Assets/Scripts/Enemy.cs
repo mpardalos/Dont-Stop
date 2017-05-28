@@ -22,4 +22,10 @@ public class Enemy : MonoBehaviour {
         Vector2 playerDirection = (m_Player.transform.position - transform.position).normalized;
         m_Rigidbody.velocity = playerDirection * MoveSpeed;
 	}
+
+    void OnCollisionEnter2D(Collision2D collision) {
+        if (collision.gameObject == m_Player.gameObject) {
+            m_Player.Health -= 1;
+        }
+    }
 }
