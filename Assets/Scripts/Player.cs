@@ -14,6 +14,7 @@ public class Player : MonoBehaviour {
     // better organisation in inspector
     [Serializable]
     public class _HealthTickProperties {
+        public bool DoHealthTick;
         public int HealthTicksPerSecond;
         public int HealthLossPerTick;
     }
@@ -51,10 +52,12 @@ public class Player : MonoBehaviour {
 
         // The Health setter is not thread safe so the timer adds to a tick count which is
         // applied and reset in Update()
-        m_HealthTick = new Timer((1.0/HealthTickProperties.HealthTicksPerSecond) * 1000);
-        m_HealthTick.AutoReset = true;
-        m_HealthTick.Elapsed += (source, e) => m_HealthTicksSinceLastUpdate += 1;
-        m_HealthTick.Enabled = true;
+        if (HealthTickProperties.DoHealthTick) {
+            m_HealthTick = new Timer((1.0/HealthTickProperties.HealthTicksPerSecond) * 1000);
+            m_HealthTick.AutoReset = true;
+            m_HealthTick.Elapsed += (source, e) => m_HealthTicksSinceLastUpdate += 1;
+            m_HealthTick.Enabled = true;
+        }
     }
     
     public void Move(Vector2 direction) {
@@ -62,9 +65,11 @@ public class Player : MonoBehaviour {
     }
 
     void Update() {
-        // Apply the health ticks from m_HealthTick 
-        Health -= m_HealthTicksSinceLastUpdate * HealthTickProperties.HealthLossPerTick;
-        m_HealthTicksSinceLastUpdate = 0;
+        if (HealthTickProperties.DoHealthTick) {
+            // Apply the health ticks from m_HealthTick 
+            Health -= m_HealthTicksSinceLastUpdate * HealthTickProperties.HealthLossPerTick;
+            m_HealthTicksSinceLastUpdate = 0;
+        }
     }
 }
 
