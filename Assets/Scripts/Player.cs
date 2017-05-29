@@ -79,6 +79,14 @@ public class Player : MonoBehaviour {
             m_HealthTicksSinceLastUpdate = 0;
         }
     }
+
+    void OnCollisionEnter2D(Collision2D collision) {
+        // If we are currently attacking and the other gameobject is an enemy, destroy it.
+        if (m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Attack") &&
+                collision.gameObject.layer == LayerMask.NameToLayer("Enemies")) {
+            Destroy(collision.gameObject);
+        }
+    }
 }
 
 [CustomEditor(typeof(Player))]
