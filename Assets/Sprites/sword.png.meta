@@ -1,0 +1,123 @@
+fileFormatVersion: 2
+guid: 86439787911e84e4e90b54de7e2ea5fd
+timeCreated: 1496053705
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: sword
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 9
+  spritePivot: {x: 0.16293986, y: 0.15947302}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: WebGL
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: sword
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 5
+        width: 21
+        height: 21
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline:
+    - - {x: 7, y: 10.224995}
+      - {x: 0.33448982, y: 3.8721771}
+      - {x: -5.5051193, y: -1.6692677}
+      - {x: -7.318099, y: 1.6311245}
+      - {x: -8.776565, y: 2.4453125}
+      - {x: -10.559369, y: 0.4468727}
+      - {x: -9.901386, y: -0.5310087}
+      - {x: -8.79125, y: -4.1480255}
+      - {x: -8.703633, y: -6.319929}
+      - {x: -10.758947, y: -8.147826}
+      - {x: -11.779684, y: -11.114058}
+      - {x: -8.995505, y: -11.28525}
+      - {x: -7.2454414, y: -9.710915}
+      - {x: -6.7608814, y: -8.335065}
+      - {x: -3.6903944, y: -8.517822}
+      - {x: -3.1393175, y: -9.437468}
+      - {x: -0.59299946, y: -9.34322}
+      - {x: 0.33870888, y: -10.534388}
+      - {x: 1.8691349, y: -9.971845}
+      - {x: 2.339054, y: -8.229675}
+      - {x: -1.0906563, y: -5.1078176}
+      - {x: 8.431374, y: 5.124199}
+      - {x: 9.906008, y: 7.231243}
+      - {x: 10.335934, y: 10.334373}
+      - {x: 9.55625, y: 10.335934}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
