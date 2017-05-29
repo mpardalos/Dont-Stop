@@ -45,9 +45,11 @@ public class Player : MonoBehaviour {
     // Timer for ticking health
     private Timer m_HealthTick;
     private int m_HealthTicksSinceLastUpdate;
+    private Animator m_Animator;
 
     void Start() {
         m_Rigidbody = GetComponent<Rigidbody2D>();
+        m_Animator = GetComponent<Animator>();
         m_Health = MaxHealth;
 
         // The Health setter is not thread safe so the timer adds to a tick count which is
@@ -62,6 +64,12 @@ public class Player : MonoBehaviour {
     
     public void Move(Vector2 direction) {
         m_Rigidbody.velocity = direction.normalized * MoveSpeed;
+    }
+
+    public void Attack() {
+        if (m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Idle")){
+            m_Animator.Play("Attack");
+        }
     }
 
     void Update() {

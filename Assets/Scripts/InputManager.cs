@@ -11,5 +11,9 @@ public class InputManager : MonoBehaviour {
 	
 	void Update() {
         m_Player.Move(new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")));
+
+        if (Input.GetButtonDown("Fire1")) {
+            m_Player.Attack();
+        }
 	}
 }
