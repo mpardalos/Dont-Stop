@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4506480778532564}
   - component: {fileID: 114316096303998164}
+  - component: {fileID: 114034202469415014}
   m_Layer: 0
   m_Name: GameMaster
   m_TagString: Untagged
@@ -40,6 +41,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114034202469415014
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1704465348430354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d47ccbbde4265244bca8af10b113d23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HealthDisplay: {fileID: 0}
+  EnemyPrefab: {fileID: 1657060401311244, guid: 7159c4cacd3d45d4b8d2bc4f773a573d,
+    type: 2}
+  MaintainInitialEnemyCount: 1
+  m_TargetEnemyCount: 0
 --- !u!114 &114316096303998164
 MonoBehaviour:
   m_ObjectHideFlags: 1

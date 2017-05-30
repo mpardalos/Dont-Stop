@@ -154,23 +154,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7159c4cacd3d45d4b8d2bc4f773a573d, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &80468707 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1704465348430354, guid: 753774f8ef5b3fc4881d57a1b98b133f,
-    type: 2}
-  m_PrefabInternal: {fileID: 1856513063}
---- !u!114 &80468710
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 80468707}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d47ccbbde4265244bca8af10b113d23, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HealthDisplay: {fileID: 282812618}
 --- !u!1 &282812616
 GameObject:
   m_ObjectHideFlags: 0
@@ -739,6 +722,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114034202469415014, guid: 753774f8ef5b3fc4881d57a1b98b133f,
+        type: 2}
+      propertyPath: HealthDisplay
+      value: 
+      objectReference: {fileID: 282812618}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 753774f8ef5b3fc4881d57a1b98b133f, type: 2}
   m_IsPrefabParent: 0
