@@ -7,15 +7,13 @@ using UnityEngine.UI;
 public class HealthDisplay : MonoBehaviour {
     public int MaxHealth;
     
-    private int m_Health;
     public int Health {
         get {
-            return m_Health;
+            return int.Parse(m_Display.text);
         } 
         set {
             if (0 <= value && value <= MaxHealth) {
-                m_Health = value;
-                m_Display.text = m_Health.ToString();
+                m_Display.text = value.ToString();
             } else {
                 throw new ArgumentException("Health must be between 0 and MaxHealth");
             }
