@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEditor;
 
 public class GameMaster : MonoBehaviour {
@@ -24,7 +25,7 @@ public class GameMaster : MonoBehaviour {
 
     void Start() {
         // Update the health on the display whenever the player's health changes
-        Player.HealthChanged += (newHealth) => HealthDisplay.Health = newHealth;
+        Player.HealthChanged += this.OnPlayerHealthChanged;
         
         // Initialize the enemy list
         m_Enemies = new List<Enemy>();
@@ -48,6 +49,14 @@ public class GameMaster : MonoBehaviour {
         foreach (Object obj in FindObjectsOfType(typeof(Enemy))) {
             m_Enemies.Add(obj as Enemy);
         }
+    }
+
+    private void OnPlayerHealthChanged(int newHealth) {
+        if (newHealth <= 0) {
+            Debug.Log("Player Dead");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+        HealthDisplay.Health = newHealth;
     }
 }
 
