@@ -25,7 +25,7 @@ public class Enemy : MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D collision) {
         if (collision.gameObject == m_Player.gameObject) {
-            m_Player.Health -= 1;
+            m_Player.SetHealth(m_Player.GetHealth() - 1, Player.HealthChangeCause.Attack);
         }
     }
 }

@@ -51,7 +51,7 @@ public class GameMaster : MonoBehaviour {
         }
     }
 
-    private void OnPlayerHealthChanged(int newHealth) {
+    private void OnPlayerHealthChanged(int newHealth, Player.HealthChangeCause cause) {
         if (newHealth <= 0) {
             Debug.Log("Player Dead");
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);

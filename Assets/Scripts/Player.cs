@@ -23,23 +23,15 @@ public class Player : MonoBehaviour {
 
     // Fired when the player's health changes. Primarily used to notify GameMaster so that
     // it can update the health display
-    public event Action<int> HealthChanged;
+    public event Action<int, HealthChangeCause> HealthChanged;
+    public enum HealthChangeCause {
+        HealthTick,
+        Attack,
+        Inspector,
+        Initialization
+    };
 
     private int m_Health;
-    public int Health {
-        get { 
-            return m_Health;
-        }
-
-        set {
-            if (0 <= value && value <= MaxHealth) {
-                m_Health = value;
-                HealthChanged(m_Health);
-            } else {
-                throw new ArgumentException("Health must be between 0 and MaxHealth");
-            }
-        }
-    }
 
     private Rigidbody2D m_Rigidbody;
     // Timer for ticking health
@@ -50,7 +42,9 @@ public class Player : MonoBehaviour {
     void Start() {
         m_Rigidbody = GetComponent<Rigidbody2D>();
         m_Animator = GetComponent<Animator>();
-        m_Health = MaxHealth;
+
+        HealthChanged += OnHealthChanged;
+        SetHealth(MaxHealth, HealthChangeCause.Initialization);
 
         // The Health setter is not thread safe so the timer adds to a tick count which is
         // applied and reset in Update()
@@ -72,10 +66,30 @@ public class Player : MonoBehaviour {
         }
     }
 
+    public void SetHealth(int value, HealthChangeCause cause) {
+        if (0 <= value && value <= MaxHealth) {
+            m_Health = value;
+            HealthChanged(m_Health, cause);
+        } else {
+            throw new ArgumentException("Health must be between 0 and MaxHealth");
+        }
+    }
+
+    public int GetHealth() {
+        return m_Health;
+    }
+
+    private void OnHealthChanged(int value, HealthChangeCause cause) {
+        Debug.Log(cause);
+        if (cause == HealthChangeCause.Attack) {
+            m_Animator.SetBool("IsAttacked", true);
+        }
+    }
+
     void Update() {
         if (HealthTickProperties.DoHealthTick) {
             // Apply the health ticks from m_HealthTick 
-            Health -= m_HealthTicksSinceLastUpdate * HealthTickProperties.HealthLossPerTick;
+            SetHealth(GetHealth() - m_HealthTicksSinceLastUpdate * HealthTickProperties.HealthLossPerTick, HealthChangeCause.HealthTick);
             m_HealthTicksSinceLastUpdate = 0;
         }
     }
@@ -87,11 +101,19 @@ public class Player : MonoBehaviour {
             Destroy(collision.gameObject);
         }
     }
+
+    void OnCollisionExit2D(Collision2D collision) {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Enemies")) {
+            m_Animator.SetBool("IsAttacked", false);
+        }
+    }
+
 }
 
 [CustomEditor(typeof(Player))]
 public class PlayerEditor : Editor {
     public override void OnInspectorGUI() {
+        Player player = (Player) target;
 
         DrawDefaultInspector();
         
@@ -99,11 +121,11 @@ public class PlayerEditor : Editor {
         GUILayout.BeginHorizontal();
 
         if (Application.isPlaying && GUILayout.Button("-Health")) {
-            ((Player)target).Health -= 1;
+            player.SetHealth(player.GetHealth() - 1, Player.HealthChangeCause.Inspector);
         }
 
         if (Application.isPlaying && GUILayout.Button("+Health")) {
-            ((Player)target).Health += 1;
+            player.SetHealth(player.GetHealth() + 1, Player.HealthChangeCause.Inspector);
         }
 
         GUILayout.EndHorizontal();
