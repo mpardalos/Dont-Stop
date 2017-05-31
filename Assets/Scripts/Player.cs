@@ -67,12 +67,13 @@ public class Player : MonoBehaviour {
     }
 
     public void SetHealth(int value, HealthChangeCause cause) {
-        if (0 <= value && value <= MaxHealth) {
-            m_Health = value;
-            HealthChanged(m_Health, cause);
-        } else {
-            throw new ArgumentException("Health must be between 0 and MaxHealth");
+        if (value < 0) {
+            value = 0;
+        } else if (value > MaxHealth) {
+            value = MaxHealth;
         }
+        m_Health = value;
+        HealthChanged(m_Health, cause);
     }
 
     public int GetHealth() {
