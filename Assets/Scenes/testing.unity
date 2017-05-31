@@ -543,6 +543,16 @@ Prefab:
       propertyPath: HealthDisplay
       value: 
       objectReference: {fileID: 282812618}
+    - target: {fileID: 114034202469415014, guid: 753774f8ef5b3fc4881d57a1b98b133f,
+        type: 2}
+      propertyPath: MaintainInitialEnemyCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114034202469415014, guid: 753774f8ef5b3fc4881d57a1b98b133f,
+        type: 2}
+      propertyPath: m_TargetEnemyCount
+      value: 50
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 753774f8ef5b3fc4881d57a1b98b133f, type: 2}
   m_IsPrefabParent: 0
@@ -555,11 +565,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4273843078298934, guid: 0548218ff79ed4148bb5c0a35d096247, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -3.24
+      value: -6.34
       objectReference: {fileID: 0}
     - target: {fileID: 4273843078298934, guid: 0548218ff79ed4148bb5c0a35d096247, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -1.5
+      value: -3.41
       objectReference: {fileID: 0}
     - target: {fileID: 4273843078298934, guid: 0548218ff79ed4148bb5c0a35d096247, type: 2}
       propertyPath: m_LocalPosition.z
@@ -594,6 +604,26 @@ Prefab:
         type: 2}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[0].y
       value: 0.2101226
+      objectReference: {fileID: 0}
+    - target: {fileID: 114674839677266922, guid: 0548218ff79ed4148bb5c0a35d096247,
+        type: 2}
+      propertyPath: EnemyKillHealthIncrease
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114674839677266922, guid: 0548218ff79ed4148bb5c0a35d096247,
+        type: 2}
+      propertyPath: HealthTickProperties.HealthTicksPerSecond
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114674839677266922, guid: 0548218ff79ed4148bb5c0a35d096247,
+        type: 2}
+      propertyPath: HealthTickProperties.HealthLossPerTick
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114674839677266922, guid: 0548218ff79ed4148bb5c0a35d096247,
+        type: 2}
+      propertyPath: MoveSpeed
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0548218ff79ed4148bb5c0a35d096247, type: 2}
