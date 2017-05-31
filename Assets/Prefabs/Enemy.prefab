@@ -100,6 +100,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoveSpeed: 2
+  AttackDamage: 5
+  DamageApplicationInterval: 1
 --- !u!212 &212902476688611100
 SpriteRenderer:
   m_ObjectHideFlags: 1
