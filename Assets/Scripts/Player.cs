@@ -81,9 +81,8 @@ public class Player : MonoBehaviour {
     }
 
     private void OnHealthChanged(int value, HealthChangeCause cause) {
-        Debug.Log(cause);
         if (cause == HealthChangeCause.Attack) {
-            m_Animator.SetBool("IsAttacked", true);
+            m_Animator.Play("Attacked");
         }
     }
 
@@ -102,13 +101,6 @@ public class Player : MonoBehaviour {
             Destroy(collision.gameObject);
         }
     }
-
-    void OnCollisionExit2D(Collision2D collision) {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Enemies")) {
-            m_Animator.SetBool("IsAttacked", false);
-        }
-    }
-
 }
 
 [CustomEditor(typeof(Player))]
