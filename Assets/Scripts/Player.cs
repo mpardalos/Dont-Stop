@@ -10,6 +10,7 @@ public class Player : MonoBehaviour {
     #region Inspector properties
     public float MoveSpeed;
     public int MaxHealth;
+    public int EnemyKillHealthIncrease;
 
     // better organisation in inspector
     [Serializable]
@@ -28,7 +29,8 @@ public class Player : MonoBehaviour {
         HealthTick,
         Attack,
         Inspector,
-        Initialization
+        Initialization,
+        EnemyKilled
     };
 
     private int m_Health;
@@ -99,6 +101,7 @@ public class Player : MonoBehaviour {
         if (m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Attack") &&
                 collision.gameObject.layer == LayerMask.NameToLayer("Enemies")) {
             Destroy(collision.gameObject);
+            SetHealth(GetHealth() + EnemyKillHealthIncrease, HealthChangeCause.EnemyKilled);
         }
     }
 }
