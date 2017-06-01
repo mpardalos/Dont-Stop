@@ -8,14 +8,13 @@ public class GameMaster : MonoBehaviour {
 
     #region Inspector Properties
     public HealthDisplay HealthDisplay;
-    public GameObject EnemyPrefab;
-    public bool MaintainInitialEnemyCount;
+    public GameObject    EnemyPrefab;
+    public bool          MaintainInitialEnemyCount;
     [SerializeField]
-    private int m_TargetEnemyCount; 
+    private int          m_TargetEnemyCount; 
     #endregion
 
-    private Player m_Player;
-    public Player Player {get; private set;}
+    public  Player Player {get; private set;}
 
     private List<Enemy> m_Enemies;
 
@@ -71,11 +70,10 @@ public class GameMasterEditor : Editor {
     private SerializedProperty m_HealthDisplay;
 
     void OnEnable() {
-        m_HealthDisplay = serializedObject.FindProperty("HealthDisplay");
-
-        m_EnemyPrefab = serializedObject.FindProperty("EnemyPrefab");
+        m_HealthDisplay             = serializedObject.FindProperty("HealthDisplay");
+        m_EnemyPrefab               = serializedObject.FindProperty("EnemyPrefab");
         m_MaintainInitialEnemyCount = serializedObject.FindProperty("MaintainInitialEnemyCount");
-        m_TargetEnemyCount = serializedObject.FindProperty("m_TargetEnemyCount");
+        m_TargetEnemyCount          = serializedObject.FindProperty("m_TargetEnemyCount");
     }
 
     public override void OnInspectorGUI() {

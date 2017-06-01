@@ -24,7 +24,7 @@ public class HealthDisplay : MonoBehaviour {
 
     void Start() {
         m_Display = gameObject.transform.Find("Display").gameObject.GetComponent<Text>();
-        Health = MaxHealth;
+        Health    = MaxHealth;
     }
             
 }
