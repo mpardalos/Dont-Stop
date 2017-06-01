@@ -5,12 +5,12 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class HealthDisplay : MonoBehaviour {
-    public int MaxHealth; 
+    public float MaxHealth; 
     public RectTransform FillTransform;
 
-    public int Health {
+    public float Health {
         set {
-            FillTransform.localScale = new Vector3((float)value/(float)MaxHealth, 1, 1);
+            FillTransform.localScale = new Vector3(value/MaxHealth, 1, 1);
             Debug.Log(FillTransform.localScale);
         }
     }

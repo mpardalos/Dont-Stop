@@ -9,22 +9,22 @@ public class Player : MonoBehaviour {
 
     #region Inspector properties
     public float MoveSpeed;
-    public int   MaxHealth;
-    public int   EnemyKillHealthIncrease;
+    public float MaxHealth;
+    public float EnemyKillHealthIncrease;
 
     // better organisation in inspector
     [Serializable]
     public class _HealthTickProperties {
-        public bool DoHealthTick;
-        public int  HealthTicksPerSecond;
-        public int  HealthLossPerTick;
+        public bool  DoHealthTick;
+        public int   HealthTicksPerSecond;
+        public float HealthLossPerTick;
     }
     public       _HealthTickProperties HealthTickProperties;
     #endregion
 
     // Fired when the player's health changes. Primarily used to notify GameMaster so that
     // it can update the health display
-    public event Action<int, HealthChangeCause> HealthChanged;
+    public event Action<float, HealthChangeCause> HealthChanged;
     public enum  HealthChangeCause {
         HealthTick,
         Attack,
@@ -33,7 +33,7 @@ public class Player : MonoBehaviour {
         EnemyKilled
     };
 
-    private int m_Health;
+    private float m_Health;
 
     private Rigidbody2D m_Rigidbody;
     // Timer for ticking health
@@ -91,7 +91,7 @@ public class Player : MonoBehaviour {
         }
     }
 
-    public void SetHealth(int value, HealthChangeCause cause) {
+    public void SetHealth(float value, HealthChangeCause cause) {
         // Clamp the new value between 0 and MaxHealth
         value = Math.Max(value, 0);
         value = Math.Min(value, MaxHealth);
@@ -100,11 +100,11 @@ public class Player : MonoBehaviour {
         HealthChanged(m_Health, cause);
     }
 
-    public int GetHealth() {
+    public float GetHealth() {
         return m_Health;
     }
 
-    private void OnHealthChanged(int value, HealthChangeCause cause) {
+    private void OnHealthChanged(float value, HealthChangeCause cause) {
         if (cause == HealthChangeCause.Attack) {
             m_Animator.Play("Attacked");
         }

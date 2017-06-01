@@ -7,7 +7,7 @@ public class Enemy : MonoBehaviour {
     
     #region Inspector properties
     public float MoveSpeed;
-    public int   AttackDamage;
+    public float AttackDamage;
     public float DamageApplicationInterval;
     #endregion
 
