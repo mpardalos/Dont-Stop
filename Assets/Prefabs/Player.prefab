@@ -38,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1061308493618878}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.34, y: -3.41, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 6.4068236, y: 6.4068236, z: 6.4068236}
   m_Children: []
   m_Father: {fileID: 0}
@@ -137,8 +137,8 @@ MonoBehaviour:
   EnemyKillHealthIncrease: 3
   HealthTickProperties:
     DoHealthTick: 1
-    HealthTicksPerSecond: 10
-    HealthLossPerTick: 2
+    HealthTicksPerSecond: 60
+    HealthLossPerTick: 0.33
 --- !u!212 &212837108384286932
 SpriteRenderer:
   m_ObjectHideFlags: 1
